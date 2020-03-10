@@ -1,0 +1,9 @@
+version: '2.0'
+
+services:
+  eos:
+    build: eos-testnet
+    image: ulamlabs/eos-testnet:latest
+    container_name: eos-testnet
+    ports:
+      - 8888:8888
