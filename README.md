@@ -1,6 +1,6 @@
 # EOS Testnet Docker Image
 
-![Docker](https://github.com/ulamlabs/eos-testnet/workflows/Docker/badge.svg) [![](https://images.microbadger.com/badges/version/ulamlabs/eos-testnet.svg)](https://microbadger.com/images/ulamlabs/eos-testnet "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/ulamlabs/eos-testnet.svg)](https://hub.docker.com/repository/docker/ulamlabs/eos-testnet)
 
 Docker image which bootstraps a custom EOS testnet node. 
 
@@ -8,7 +8,7 @@ Docker image which bootstraps a custom EOS testnet node.
 
 Docker image makes use of these environment variables:
 
-- `EOS_PUBLIC_KEY` - public key for `eosio` account, defaults to `EOS8VhvYTcUMwp9jFD8UWRMPgWsGQoqBfpBvrjjfMCouqRH9JF5qWz`,
+- `EOS_PUBLIC_KEY` - public key for `eosio` account, defaults to `EOS8VhvYTcUMwp9jFD8UWRMPgWsGQoqBfpBvrjjfMCouqRH9JF5qW`,
 - `EOS_PRIVATE_KEY` - private key for `eosio` account, defaults to `5JeaxignXEg3mGwvgmwxG6w6wHcRp9ooPw81KjrP2ah6TWSECDN`,
 - `EOS_TEST_ACCOUNT` - account name for test account, defaults to `eostest12345`. Test account is initialized with balance of 50000000000.0000 EOS. There is 9000000000.0000 EOS staked on both CPU and NET. Account has 8192 KB of RAM
 
