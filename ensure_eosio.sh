@@ -18,8 +18,8 @@ do
         echo Retry limit exceeded, rebooting
     fi
     ((x+=1))
-    docker-compose stop eos-testnet &> /dev/null
+    docker-compose stop eos &> /dev/null
     docker-compose rm -f &> /dev/null
-    docker-compose up -d eos-testnet &> /dev/null
+    docker-compose up -d eos &> /dev/null
     sleep 5
 done
