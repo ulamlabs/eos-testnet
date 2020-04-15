@@ -21,14 +21,14 @@ curl -X POST http://127.0.0.1:8888/v1/producer/schedule_protocol_feature_activat
 cleos wallet create -f /tmp/pass
 cleos wallet import --private-key $EOS_PRIVATE_KEY
 
-for x in eosio.bpay eosio.msig eosio.names eosio.ram eosio.ramfee eosio.saving eosio.stake eosio.token eosio.vpay eosio.rex eosio.bios eosio.wrap
+for x in eosio.bpay eosio.msig eosio.names eosio.ram eosio.ramfee eosio.saving eosio.stake eosio.token eosio.vpay eosio.rex eosio.wrap
 do
   cleos create account eosio ${x} $EOS_PUBLIC_KEY
 done
 
 retry cleos set contract eosio /tmp/eosio.contracts/build/contracts/eosio.system/
 
-for x in eosio.msig eosio.token eosio.bios eosio.wrap
+for x in eosio.msig eosio.token eosio.wrap
 do
   retry cleos set contract ${x} /tmp/eosio.contracts/build/contracts/${x}/
 done
@@ -51,7 +51,7 @@ retry cleos push action eosio init '["0", "4,EOS"]' -p eosio@active
 # - A_sau - amount staked by all accounts
 # https://steemit.com/eos/@dexeosio/eosio-why-cpu-bandwidth-varies
 
-retry cleos system newaccount eosio --transfer $EOS_TEST_ACCOUNT $EOS_PUBLIC_KEY --stake-net "9000000000.0000 EOS" --stake-cpu "9000000000.0000 EOS" --buy-ram-kbytes 8192
+retry cleos system newaccount eosio --transfer $EOS_TEST_ACCOUNT $EOS_PUBLIC_KEY --stake-net "675000000.0000 EOS" --stake-cpu "6750000000.0000 EOS" --buy-ram-kbytes 8192
 retry cleos transfer eosio $EOS_TEST_ACCOUNT "50000000000.0000 EOS"
 
 # register and vote for producer to make chain activated
