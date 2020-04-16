@@ -2,6 +2,9 @@
 RETRY_LIMIT=${RETRY_LIMIT:-10}
 SAMPLE_SIZE=${1:-100}
 
+rm -rf ./logs &> /dev/null
+mkdir ./logs &> /dev/null
+
 docker-compose rm -f &> /dev/null
 x=0
 echo timestamp,attempt,retries
@@ -32,5 +35,6 @@ do
         echo ! Retry limit exceeded >&2
     fi
     echo $timestamp,$x,$y
+    docker logs eos-testnet &> logs/failures_${y}_run_${x}.log
     ((x+=1))
 done
