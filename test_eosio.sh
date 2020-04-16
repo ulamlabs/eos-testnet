@@ -9,16 +9,16 @@ while [ $x -lt $SAMPLE_SIZE ];
 do
     echo == Run $((x+1))/$SAMPLE_SIZE == >&2
 
-    docker-compose stop eos-testnet &> /dev/null
+    docker-compose stop &> /dev/null
     docker-compose rm -f &> /dev/null
     timestamp=$(date +"%s")
-    docker-compose up -d eos-testnet &> /dev/null
+    docker-compose up -d &> /dev/null
     sleep 5
 
     y=0
     while [ $y -lt $RETRY_LIMIT ];
     do	
-        docker exec testnet cleos get table eosio eosio delband &> /dev/null
+        docker exec eos-testnet cleos get table eosio eosio delband &> /dev/null
         if [ $? -eq 0 ];
         then
             break
