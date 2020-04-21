@@ -15,6 +15,11 @@ retry() {
     done
 }
 
+deploy_contract() {
+  cleos set contract $1 $2 -j -d -s -x 3600 > /tmp/trx
+  retry cleos sign -k $EOS_PRIVATE_KEY -p /tmp/trx
+}
+
 # https://eosio.stackexchange.com/a/5052/3555
 curl -X POST http://127.0.0.1:8888/v1/producer/schedule_protocol_feature_activations -d '{"protocol_features_to_activate": ["0ec7e080177b2c02b278d5088611686b49d739925a92d9bfcacd7fc6b74053bd"]}'
 
@@ -26,11 +31,11 @@ do
   cleos create account eosio ${x} $EOS_PUBLIC_KEY
 done
 
-retry cleos set contract eosio /tmp/eosio.contracts/build/contracts/eosio.system/
+deploy_contract eosio /tmp/eosio.contracts/build/contracts/eosio.system/
 
 for x in eosio.msig eosio.token eosio.wrap
 do
-  retry cleos set contract ${x} /tmp/eosio.contracts/build/contracts/${x}/
+  deploy_contract ${x} /tmp/eosio.contracts/build/contracts/${x}/
 done
 
 sleep 1
